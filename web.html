@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+  <title>{{file_name}} - Noob Marcus</title>
+  <meta property="og:image" content="https://cdn.jsdelivr.net/gh/rxevelyn/RXIMG@main/watch-more-text-dark-background_846732-30.jpg">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/rxevelyn/RXIMG@main/LOGO.png" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-bg: #0a0a0f;
+      --secondary-bg: #141419;
+      --accent-primary: #6366f1;
+      --accent-secondary: #8b5cf6;
+      --accent-tertiary: #ec4899;
+      --text-primary: #ffffff;
+      --text-secondary: #d1d5db;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.15);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated mesh gradient background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.2), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(139, 92, 246, 0.15), transparent),
+        radial-gradient(ellipse 70% 50% at 20% 80%, rgba(236, 72, 153, 0.1), transparent);
+      pointer-events: none;
+      z-index: 0;
+      animation: meshMove 20s ease-in-out infinite;
+    }
+
+    @keyframes meshMove {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    /* Floating particles */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.08), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.08), transparent);
+      background-size: 200% 200%;
+      animation: particlesFloat 30s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes particlesFloat {
+      0%, 100% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 5px;
+      background: rgba(10, 10, 20, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      background: linear-gradient(135deg, rgba(10, 10, 15, 0.95) 0%, rgba(20, 20, 30, 0.95) 100%);
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent-primary) 25%, 
+        var(--accent-secondary) 50%, 
+        var(--accent-tertiary) 75%, 
+        transparent 100%);
+      animation: gradientSlide 4s ease-in-out infinite;
+    }
+
+    @keyframes gradientSlide {
+      0%, 100% { transform: translateX(-100%); opacity: 0.5; }
+      50% { transform: translateX(100%); opacity: 1; }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #c7d2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+      animation: titleGlow 3s ease-in-out infinite;
+      line-height: 1.3;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.2); }
+    }
+
+    .video-box {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #000 0%, #0a0a14 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(99, 102, 241, 0.2),
+        inset 0 0 60px rgba(99, 102, 241, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .video-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        var(--accent-primary) 90deg,
+        var(--accent-secondary) 180deg,
+        var(--accent-tertiary) 270deg,
+        transparent 360deg
+      );
+      opacity: 0;
+      animation: rotateBorder 4s linear infinite;
+      transition: opacity 0.4s ease;
+    }
+
+    .video-box:hover::before {
+      opacity: 0.3;
+    }
+
+    @keyframes rotateBorder {
+      to { transform: rotate(360deg); }
+    }
+
+    .video-box:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 
+        0 50px 100px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(99, 102, 241, 0.4),
+        0 0 60px rgba(99, 102, 241, 0.3),
+        inset 0 0 80px rgba(99, 102, 241, 0.08);
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 1;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      padding: 1.3rem 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+        var(--accent-primary), 
+        var(--accent-secondary), 
+        var(--accent-tertiary), 
+        var(--accent-primary));
+      background-size: 300% 300%;
+      border-radius: 14px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      animation: gradientRotate 3s ease infinite;
+    }
+
+    @keyframes gradientRotate {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .btn:hover::after {
+      opacity: 0.6;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-4px) scale(1.02);
+      border-color: transparent;
+      box-shadow: 
+        0 15px 35px rgba(99, 102, 241, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+
+    .btn img {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+      z-index: 1;
+    }
+
+    .btn span, .btn i {
+      z-index: 1;
+      position: relative;
+    }
+
+    .info {
+      background: linear-gradient(135deg, 
+        rgba(99, 102, 241, 0.12) 0%, 
+        rgba(139, 92, 246, 0.08) 50%,
+        rgba(236, 72, 153, 0.06) 100%);
+      padding: 2rem;
+      border-radius: 16px;
+      margin-bottom: 3rem;
+      line-height: 1.9;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      box-shadow: 
+        0 10px 30px rgba(99, 102, 241, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .info::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+      animation: infoGlow 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes infoGlow {
+      0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+      50% { transform: translate(-30%, -30%); opacity: 0.6; }
+    }
+
+    .info p {
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .info p:last-child {
+      margin-bottom: 0;
+    }
+
+    .info strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .info a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .info a:hover {
+      color: #c7d2fe;
+      border-bottom-color: #c7d2fe;
+      text-shadow: 0 0 10px rgba(167, 180, 252, 0.5);
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .social a::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, 
+        var(--accent-primary), 
+        var(--accent-secondary), 
+        var(--accent-tertiary));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    .social a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-8px) scale(1.1) rotate(5deg);
+      box-shadow: 
+        0 15px 30px rgba(99, 102, 241, 0.5),
+        0 0 30px rgba(99, 102, 241, 0.3);
+      border-color: transparent;
+    }
+
+    .social a:hover::before {
+      opacity: 1;
+    }
+
+    .social a:nth-child(1):hover { transform: translateY(-8px) scale(1.1) rotate(-5deg); }
+    .social a:nth-child(2):hover { transform: translateY(-8px) scale(1.1) rotate(5deg); }
+    .social a:nth-child(3):hover { transform: translateY(-8px) scale(1.1) rotate(-5deg); }
+    .social a:nth-child(4):hover { transform: translateY(-8px) scale(1.1) rotate(5deg); }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border-color);
+      background: linear-gradient(135deg, rgba(10, 10, 15, 0.8) 0%, rgba(20, 20, 30, 0.6) 100%);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    }
+
+    footer a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    footer a:hover {
+      color: #c7d2fe;
+      text-shadow: 0 0 10px rgba(167, 180, 252, 0.5);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, rgba(20, 20, 30, 0.95), rgba(30, 30, 45, 0.95));
+      backdrop-filter: blur(20px);
+      color: var(--text-primary);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9999;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(99, 102, 241, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-bg);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 10px;
+      border: 2px solid var(--secondary-bg);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, var(--accent-secondary), var(--accent-tertiary));
+    }
+
+    /* Loading state */
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .loading::before,
+    .loading::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: var(--accent-primary);
+    }
+
+    .loading::before {
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading::after {
+      width: 40px;
+      height: 40px;
+      top: 10px;
+      left: 10px;
+      border-top-color: var(--accent-secondary);
+      animation: spin 0.8s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.4rem;
+        padding: 1.2rem;
+        letter-spacing: 3px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .container {
+        padding: 1.5rem 1rem;
+      }
+
+      .buttons {
+        grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 1.1rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .info {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .social a {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+
+      .video-box {
+        border-radius: 16px;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem 0.8rem;
+      }
+
+      .buttons {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+      }
+
+      header {
+        font-size: 1.2rem;
+        padding: 1rem;
+        letter-spacing: 2px;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .btn {
+        padding: 1rem 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      .social {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>ɴᴏᴏʙ ᴍᴀʀᴄᴜꜱ</header>
+
+  <div class="container">
+    <h2>{{file_name}}</h2>
+
+    <div class="video-box">
+      <video id="mainVideo" controls playsinline preload="metadata">
+        <source src="{{file_url}}" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="buttons">
+      <button class="btn" onclick="openVLC('{{file_url}}')">
+        <img src="https://cdn.jsdelivr.net/gh/rxevelyn/RXIMG@main/VLC-image%20(1).png" alt="">
+        <span>VLC Player</span>
+      </button>
+
+      <button class="btn" onclick="openPlayer('mx', '{{file_url}}')">
+        <img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/mx.png" alt="">
+        <span>MX Player</span>
+      </button>
+
+      <button class="btn" onclick="openPlayer('km', '{{file_url}}')">
+        <img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/km.webp" alt="">
+        <span>KM Player</span>
+      </button>
+
+      <button class="btn" onclick="openPlayer('nplayer', '{{file_url}}')">
+        <img src="https://cdn.jsdelivr.net/gh/Botsthe/DATABASE@main/image/nPlayer.webp" alt="">
+        <span>nPlayer</span>
+      </button>
+
+      <button class="btn" onclick="openPlayer('playit', '{{file_url}}')">
+        <img src="https://cdn.jsdelivr.net/gh/rxevelyn/RXIMG@main/playit-logo.png" alt="">
+        <span>PLAYit</span>
+      </button>
+
+      <button class="btn" onclick="openPlayer('xplayer', '{{file_url}}')">
+        <img src="https://cdn.jsdelivr.net/gh/rxevelyn/RXIMG@main/x%20plyers%20(2).png" alt="">
+        <span>XPlayer</span>
+      </button>
+
+      <a class="btn" href="{{file_url}}" download>
+        <i class="fas fa-download"></i>
+        <span>Download</span>
+      </a>
+
+      <button class="btn" onclick="copyLink()">
+        <i class="fas fa-link"></i>
+        <span>Copy Link</span>
+      </button>
+    </div>
+
+    <div class="info">
+      <p><strong>📱 Playback issues?</strong> Download <a href="https://www.videolan.org/vlc/" target="_blank">VLC Player</a> for the best experience with audio track switching and subtitle support.</p>
+      <p><strong>💬 Need help?</strong> Contact us on <a href="https://t.me/noob_marcus" target="_blank">Telegram</a> for instant support!</p>
+    </div>
+
+    <div class="social">
+      <a href="https://t.me/noob_marcus" target="_blank" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://t.me/Noob_Marcus_Support" target="_blank" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://t.me/noob_marcus" target="_blank" title="Discord" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://youtube.com/@top10ner?si=i3FT4zWdbjwF-kBL" target="_blank" title="YouTube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 <a href="https://t.me/noob_marcus" target="_blank">Noob Marcus</a> • Crafted with ❤️
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    function showToast(msg, duration = 2500) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), duration);
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText("{{file_url}}")
+        .then(() => showToast('✓ Link copied to clipboard'))
+        .catch(() => showToast('✗ Failed to copy link'));
+    }
+
+    function openVLC(url) {
+      const intent = `intent://${url.replace(/^https?:\/\//, '')}#Intent;package=org.videolan.vlc;type=video/mp4;scheme=https;end`;
+      window.location.href = intent;
+      setTimeout(() => {
+        if (document.hasFocus()) showToast('⚠ VLC Player not installed', 3000);
+      }, 1500);
+    }
+
+    function openPlayer(player, url) {
+      const players = {
+        mx: 'com.mxtech.videoplayer.ad',
+        km: 'com.kmplayer',
+        nplayer: 'com.newin.nPlayer',
+        playit: 'com.playit.videoplayer',
+        xplayer: 'com.video.player.xplayer'
+      };
+      
+      const intent = `intent://${url.replace(/^https?:\/\//, '')}#Intent;package=${players[player]};type=video/mp4;scheme=https;end`;
+      window.location.href = intent;
+      
+      setTimeout(() => {
+        if (document.hasFocus()) {
+          const playerName = player.charAt(0).toUpperCase() + player.slice(1);
+          showToast(`⚠ ${playerName} Player not installed`, 3000);
+        }
+      }, 1500);
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.querySelector('video');
+      video.removeAttribute('autoplay');
+      
+      // Smooth page load animation
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.6s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+
+      // Add stagger animation to buttons
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach((btn, index) => {
+        btn.style.opacity = '0';
+        btn.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          btn.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          btn.style.opacity = '1';
+          btn.style.transform = 'translateY(0)';
+        }, 100 + (index * 50));
+      });
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Ctrl+C or Cmd+C to copy link
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c' && !window.getSelection().toString()) {
+        e.preventDefault();
+        copyLink();
+      }
+      
+      // Space to play/pause video
+      if (e.key === ' ' && document.activeElement.tagName !== 'BUTTON') {
+        e.preventDefault();
+        const video = document.getElementById('mainVideo');
+        if (video.paused) {
+          video.play();
+          showToast('▶ Playing', 1500);
+        } else {
+          video.pause();
+          showToast('⏸ Paused', 1500);
+        }
+      }
+    });
+
+    // Add ripple effect on button click
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX
